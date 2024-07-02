@@ -2,12 +2,13 @@
 using System;
 using System.Collections;
 using UnityEditor.DeviceSimulation;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
     [SerializeField] Camera cam;
-    [SerializeField] string collisionTag;
+    [SerializeField] string collisionTag = "Untagged";
     bool _canTouch;
 
     void Start()
@@ -38,13 +39,14 @@ public class TouchManager : MonoBehaviour
             var hit = Physics2D.OverlapPoint(cam.ScreenToWorldPoint(pos));
             if (CanTouch(hit))
             {
-                //var selectedCard = hit.gameObject.GetComponent<Card>();
-                //Debug.Log(selectedCard.gameObject.name + " AD");
-                //TouchEvents.OnCardTapped?.Invoke(selectedCard);
+                if (hit.gameObject.TryGetComponent(out ITouchable selectedElement))
+                {
+                    TouchEvents.OnElementTapped?.Invoke(selectedElement);
+                }
             }
             else
             {
-                // TouchEvents.OnEmptyTapped?.Invoke();
+                TouchEvents.OnEmptyTapped?.Invoke();
             }
         }
     }
@@ -63,7 +65,7 @@ public class TouchManager : MonoBehaviour
 
     public interface ITouchable
     {
-
+        GameObject gameObject { get; }
     }
 
 }

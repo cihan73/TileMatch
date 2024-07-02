@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TouchManager;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, ITouchable
 {
-    // Start is called before the first frame update
-    void Start()
+  public void Prepared()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
