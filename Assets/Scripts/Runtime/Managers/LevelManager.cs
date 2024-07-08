@@ -44,4 +44,10 @@ public class LevelManager : MonoBehaviour
 
         }
     }
+    void Save(CompleteData completeData)
+    {
+        _levelSaveData.Data[completeData.Index + 1].isUnlocked = true;
+        _levelSaveData.Data[completeData.Index].highScore = completeData.Score;
+        DataHandler.Save(_levelSaveData, DataKeys.LevelScoreDataKey);
+    }
 }
