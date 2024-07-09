@@ -10,8 +10,14 @@ public class LevelsView : MonoBehaviour
     [SerializeField] Button closeButton;
     [SerializeField] Transform levelsContainer;
 
+    private void Awake()
+    {
+        CloseFast();
+    }
+
     void Appear()
     {
+        DOTween.Kill(levelsContainer);
         levelPanel.SetActive(true);
 
         levelsContainer.DOScale(1, .28f)
@@ -20,8 +26,21 @@ public class LevelsView : MonoBehaviour
             .SetEase(Ease.OutBack);
     }
 
-    void DisAppear()
+    void Disappear()
     {
+        DOTween.Kill(levelsContainer);
 
+        levelsContainer.DOScale(0, .28F)
+            .OnStart(() => closeButton.interactable = false)
+            .OnComplete(() => levelPanel.SetActive(false))
+            .SetEase(Ease.InBack);
     }
+
+    void CloseFast()
+    {
+        levelsContainer.localScale = Vector3.zero;
+        closeButton.interactable = false;
+        levelPanel.SetActive(false);
+    }
+
 }
