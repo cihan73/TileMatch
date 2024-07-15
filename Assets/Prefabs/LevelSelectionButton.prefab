@@ -640,3 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652010127c8b267439bd244625141d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockIcon: {fileID: 3650758114403405231}
+  playText: {fileID: 545450363607210930}
+  levelInfoText: {fileID: 7173960970463972577}
+  playButton: {fileID: 2370859659165987455}

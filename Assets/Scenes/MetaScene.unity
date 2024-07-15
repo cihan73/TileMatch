@@ -777,6 +777,7 @@ GameObject:
   - component: {fileID: 1336402320}
   - component: {fileID: 1336402319}
   - component: {fileID: 1336402318}
+  - component: {fileID: 1336402321}
   m_Layer: 0
   m_Name: Scroll
   m_TagString: Untagged
@@ -802,7 +803,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 525, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336402318
 MonoBehaviour:
@@ -872,6 +873,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1336402321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336402316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1344588250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256ef6826845b2f42ac9f69f9907208d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 983427891835207507, guid: deca8035d1414f14ba61368695b21366, type: 3}
   spawnParent: {fileID: 1918767966}
 --- !u!1 &2005876519
 GameObject:
