@@ -5,10 +5,21 @@ using UnityEngine.UI;
 
 public class LevelSelectionButton : MonoBehaviour
 {
+
     [SerializeField] GameObject lockIcon, playText;
     [SerializeField] TextMeshProUGUI levelInfoText;
     [SerializeField] Button playButton;
     int _index;
+
+    private void OnEnable()
+    {
+        playButton.onClick.AddListener(OnClick); 
+    }
+
+    private void OnDisable()
+    {
+        playButton.onClick.RemoveListener(OnClick);
+    }
 
     public void Prepare(LevelScoresData data)
     {
@@ -28,4 +39,11 @@ public class LevelSelectionButton : MonoBehaviour
     {
         levelInfoText.text = $"Level {data.index} - {data.title} {Environment.NewLine} HighScore: {data.highScore}";
     }
+
+    void OnClick()
+    {
+        LevelEvents.OnLevelSelected?.Invoke(_index);
+    }
+
+
 }
