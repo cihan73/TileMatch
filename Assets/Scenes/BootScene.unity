@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9affc81fca88c4649ad6dc88937314f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSelectionSo: {fileID: 11400000, guid: 7e75e6b06e9cb8e43be5635758c6e245, type: 2}
   levelFiles:
   - {fileID: 4900000, guid: 4d04686c548a20444b511e034c8e2315, type: 3}
   - {fileID: 4900000, guid: 862a599dba719864c875b66e09a0476c, type: 3}
