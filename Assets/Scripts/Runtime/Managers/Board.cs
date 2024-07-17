@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using static TouchManager;
 
@@ -39,5 +41,21 @@ public class Board : MonoBehaviour
     void TileTapped(ITouchable touchable)
     {
         var tappedTile = touchable.gameObject.GetComponent<Tile>();
+
+        if (!CanTap(tappedTile)) return;
+
+
+    }
+
+    bool CanTap(Tile tile)
+    {
+        return tile.SubmitBlock == null
+            && IsVisible(tile);
+    }
+
+    bool IsVisible(Tile tile)
+    {
+        return Tiles.All(t => t.GetChildren() == null
+                              || Array.IndexOf(t.GetChildren(), tile.GetID()) == -1);
     }
 }
