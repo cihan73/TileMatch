@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 227642005054078153, guid: 5f42b4679e3b56540ae5cb0f5c3c297a,
     type: 3}
+  levelSelectionSo: {fileID: 11400000, guid: 7e75e6b06e9cb8e43be5635758c6e245, type: 2}
   tileParent: {fileID: 961654041}
 --- !u!1 &752575187
 GameObject:
