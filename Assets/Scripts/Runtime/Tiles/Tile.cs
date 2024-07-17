@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static TouchManager;
 
 public class Tile : MonoBehaviour, ITouchable
 {
-  public void Prepared()
-    {
+    TileData _tileData;
 
+    public void Prepare(TileData tileData)
+    {
+        _tileData = tileData;
+        gameObject.name = $"Tile_{_tileData.id}_{_tileData.character}";
     }
 }
