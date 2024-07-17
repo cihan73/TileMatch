@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SubmitBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Tile Tile
     {
-        
-    }
+        get => _tile;
+        set
+        {
+            if (_tile == value) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            _tile = value;
+
+            if (_tile != null)
+            {
+                _tile.SubmitBlock = this;
+                // tile attached
+            }
+            else
+            {
+                // tile removed
+            }
+        }
     }
+    Tile _tile;
 }
