@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
 
     [Header("Scene Dependency")]
     [SerializeField] Transform tileParent;
+    [SerializeField] SubmitManager submitManager;
 
     public Tile[] Tiles { get; private set; }
 
@@ -43,8 +44,7 @@ public class Board : MonoBehaviour
         var tappedTile = touchable.gameObject.GetComponent<Tile>();
 
         if (!CanTap(tappedTile)) return;
-
-
+        if (!submitManager.HasEmptyBlock()) return;
     }
 
     bool CanTap(Tile tile)
