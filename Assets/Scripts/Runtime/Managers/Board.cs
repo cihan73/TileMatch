@@ -37,6 +37,7 @@ public class Board : MonoBehaviour
             Tiles[i] = Instantiate(tilePrefab, tileParent);
             Tiles[i].Prepare(levelSelectionSo.levelData.tiles[i]);
         }
+        GameEvents.OnTilesSpawned?.Invoke(Tiles);
     }
 
     void TileTapped(ITouchable touchable)
