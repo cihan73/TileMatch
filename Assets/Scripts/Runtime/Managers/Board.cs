@@ -45,6 +45,8 @@ public class Board : MonoBehaviour
 
         if (!CanTap(tappedTile)) return;
         if (!submitManager.HasEmptyBlock()) return;
+
+        //todo: handle tap
     }
 
     bool CanTap(Tile tile)
