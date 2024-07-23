@@ -15,6 +15,8 @@ public class Board : MonoBehaviour
     [SerializeField] Transform tileParent;
     [SerializeField] SubmitManager submitManager;
 
+    public TileCommandInvoker TileCommandInvoker => _tileCommandInvoker;
+
     public Tile[] Tiles { get; private set; }
     private TileCommandInvoker _tileCommandInvoker;
 
