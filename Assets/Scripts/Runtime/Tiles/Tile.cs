@@ -5,6 +5,7 @@ using static TouchManager;
 
 public class Tile : MonoBehaviour, ITouchable, ITileCommand
 {
+    [SerializeField] TileStatsSO tileStats;
     [SerializeField] TextMeshPro tmp;
     public SubmitBlock SubmitBlock
     {
@@ -39,14 +40,24 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
 
         DOTween.Kill(transform);
 
-        transform.DOLocalMove(submitBlock.transform.position, .5f)
+        transform.DOLocalMove(submitBlock.transform.position, tileStats.executeSpeed)
             .SetSpeedBased(true)
-            .SetEase(Ease.OutSine);
+            .SetEase(tileStats.executeEase);
     }
 
     public void Undo()
     {
+        DOTween.Kill(transform);
 
+        if (SubmitBlock != null)
+        {
+            SubmitBlock.Tile = null;
+            SubmitBlock = null;
+        }
+
+        transform.DOLocalMove(_basePos, tileStats.executeSpeed * 2)
+            .SetSpeedBased(true)
+            .SetEase(tileStats.executeEase);
     }
 
     public string GetCharacter()
