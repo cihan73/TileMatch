@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileStats: {fileID: 11400000, guid: 811f4a136a76e6648bf91bbcb69f6d50, type: 2}
   tmp: {fileID: 7874818194019593074}
+  spriteRenderer: {fileID: 5868027271149322572}
 --- !u!61 &-4103398624476326659
 BoxCollider2D:
   m_ObjectHideFlags: 0
