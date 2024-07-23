@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
 {
     [SerializeField] TileStatsSO tileStats;
     [SerializeField] TextMeshPro tmp;
+    [SerializeField] SpriteRenderer spriteRenderer;
     public SubmitBlock SubmitBlock
     {
         get => _submitBlock;
@@ -40,7 +41,7 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
 
         DOTween.Kill(transform);
 
-        transform.DOLocalMove(submitBlock.transform.position, tileStats.executeSpeed)
+        transform.DOMove(submitBlock.transform.position, tileStats.executeSpeed)
             .SetSpeedBased(true)
             .SetEase(tileStats.executeEase);
     }
@@ -55,7 +56,7 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
             SubmitBlock = null;
         }
 
-        transform.DOLocalMove(_basePos, tileStats.executeSpeed * 2)
+        transform.DOMove(_basePos, tileStats.executeSpeed * 2)
             .SetSpeedBased(true)
             .SetEase(tileStats.executeEase);
     }
@@ -75,6 +76,13 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
     public int GetID()
     {
         return _tileData.id;
+    }
+
+    public void UpdateVisual(bool isVisable)
+    {
+        spriteRenderer.color = isVisable
+            ? Color.white
+            : Color.gray;
     }
 
     private void SetPosition(Vector3 newPos)

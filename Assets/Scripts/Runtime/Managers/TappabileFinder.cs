@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TappabileFinder : MonoBehaviour
+public class TappableFinder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Board board;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        foreach (var tile in board.Tiles)
+        {
+            tile.UpdateVisual(board.IsVisible(tile));
+        }
     }
 }

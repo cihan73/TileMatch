@@ -2,7 +2,6 @@ using System.Collections;
 using System.Linq;
 using Cinemachine;
 using UnityEngine;
- 
 
 [DefaultExecutionOrder(-999)]
 public class CameraHandler : MonoBehaviour
@@ -23,6 +22,10 @@ public class CameraHandler : MonoBehaviour
         yield return null;
 
         blockParent.position = new Vector3(GetMeanTileX(), GetTopTileY() + offset, GetMeanTileZ());
+
+        yield return null;
+
+        targetGroup.enabled = false;
     }
 
     void OnDestroy()
