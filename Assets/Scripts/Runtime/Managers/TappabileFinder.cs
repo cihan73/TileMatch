@@ -1,10 +1,21 @@
+using System;
 using UnityEngine;
 
-public class TappableFinder : MonoBehaviour
+public class TappabileFinder : MonoBehaviour
 {
     [SerializeField] private Board board;
 
-    private void Update()
+    private void Awake()
+    {
+        GameEvents.OnSearchVisibleTiles += Search;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnSearchVisibleTiles -= Search;
+    }
+
+    private void Search()
     {
         foreach (var tile in board.Tiles)
         {

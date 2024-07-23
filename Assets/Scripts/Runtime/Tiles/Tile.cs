@@ -44,6 +44,8 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
         transform.DOMove(submitBlock.transform.position, tileStats.executeSpeed)
             .SetSpeedBased(true)
             .SetEase(tileStats.executeEase);
+
+        GameEvents.OnSearchVisibleTiles?.Invoke();
     }
 
     public void Undo()
@@ -59,6 +61,8 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
         transform.DOMove(_basePos, tileStats.executeSpeed * 2)
             .SetSpeedBased(true)
             .SetEase(tileStats.executeEase);
+
+        GameEvents.OnSearchVisibleTiles?.Invoke();
     }
 
     public string GetCharacter()
