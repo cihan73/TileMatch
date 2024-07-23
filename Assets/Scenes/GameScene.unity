@@ -1889,6 +1889,7 @@ GameObject:
   - component: {fileID: 2086732852}
   - component: {fileID: 2086732851}
   - component: {fileID: 2086732850}
+  - component: {fileID: 2086732855}
   m_Layer: 0
   m_Name: UndoButton
   m_TagString: Untagged
@@ -2028,6 +2029,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086732848}
   m_CullTransparentMesh: 1
+--- !u!114 &2086732855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086732848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de884bb2fc7d194ca5b6bab58905c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2086732850}
+  board: {fileID: 437531447}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

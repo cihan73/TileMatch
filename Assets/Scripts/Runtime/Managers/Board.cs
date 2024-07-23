@@ -46,6 +46,8 @@ public class Board : MonoBehaviour
         }
 
         GameEvents.OnTilesSpawned?.Invoke(Tiles);
+        GameEvents.OnSearchVisibleTiles?.Invoke();
+
     }
 
     private void TileTapped(ITouchable touchable)
