@@ -99,4 +99,5 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
     {
         tmp.text = character;
     }
+
 }

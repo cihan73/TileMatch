@@ -1,6 +1,8 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
+
 public class UndoButton : MonoBehaviour
 {
     [SerializeField] private Button button;
@@ -9,16 +11,16 @@ public class UndoButton : MonoBehaviour
     private void Awake()
     {
         button.onClick.AddListener(OnClick);
-       
     }
+
     private void Start()
     {
-         ObserveCommand();
+        ObserveCommand();
     }
 
     private void OnDestroy()
     {
-        button.onClick.AddListener(OnClick);
+        button.onClick.RemoveListener(OnClick);
     }
 
     private void ObserveCommand()
@@ -27,7 +29,6 @@ public class UndoButton : MonoBehaviour
             .Subscribe(hasCommand =>
             {
                 button.interactable = hasCommand;
-
             }).AddTo(gameObject);
     }
 
@@ -35,5 +36,4 @@ public class UndoButton : MonoBehaviour
     {
         board.TileCommandInvoker.RemoveCommand();
     }
-
 }
