@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+[DefaultExecutionOrder(-900)]
 public class TappabileFinder : MonoBehaviour
 {
     [SerializeField] private Board board;
