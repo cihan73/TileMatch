@@ -1,7 +1,7 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
@@ -35,5 +35,50 @@ public class WordManager : MonoBehaviour
     private bool IsWordValid(string word)
     {
         return _wordArray.Contains(word);
+    }
+
+    private async void CheckIfBoardHasValidWord()
+    {
+        var tiles = board.GetActiveTiles();
+
+        if (tiles.Count <= 0)
+        {
+            //todo: complete level
+            return;
+        }
+
+        var characters = tiles.Select(tile => tile.GetCharacter()).ToList();
+        var checkList = _wordArray.Except(_prevWords);
+        var validWordFound = await UniTask.RunOnThreadPool(() =>
+                FindValidWord(checkList, characters));
+
+        if (!validWordFound)
+        {
+            //todo: complete
+        }
+    }
+
+    private bool FindValidWord(IEnumerable<string> wordList,
+        IReadOnlyCollection<string> characters)
+    {
+        return wordList.Any(word => CanFormWord(word, characters));
+    }
+
+    private bool CanFormWord(string word, IEnumerable<string> characters)
+    {
+        var availableCharacter = new List<string>(characters);
+
+        foreach (var charString in word.Select(ch => ch.ToString()))
+        {
+            if (availableCharacter.Contains(charString))
+            {
+                availableCharacter.Remove(charString);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

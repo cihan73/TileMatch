@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
     [SerializeField] TileStatsSO tileStats;
     [SerializeField] TextMeshPro tmp;
     [SerializeField] SpriteRenderer spriteRenderer;
+    public bool IsClear { get; private set; }
     public SubmitBlock SubmitBlock
     {
         get => _submitBlock;
@@ -72,9 +73,18 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
 
     public int[] GetChildren()
     {
-        if (SubmitBlock != null) return null;
+        if (SubmitBlock != null || IsClear) return null;
 
         return _tileData.children;
+    }
+
+    public void Clear()
+    {
+        IsClear = true;
+        SubmitBlock.Tile = null;
+        SubmitBlock = null;
+
+        transform.DOScale(0, .28f).SetEase(Ease.InBack);
     }
 
     public int GetID()
@@ -99,5 +109,4 @@ public class Tile : MonoBehaviour, ITouchable, ITileCommand
     {
         tmp.text = character;
     }
-
 }
