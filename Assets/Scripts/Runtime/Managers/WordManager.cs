@@ -86,7 +86,7 @@ public class WordManager : MonoBehaviour
     {
         _prevWords.Add(_currentWord);
         _currentWord = "";
-        //todo: invoke action
+        GameEvents.OnWordSubmitted?.Invoke();
         CheckIfBoardHasValidWord();
     }
 }
