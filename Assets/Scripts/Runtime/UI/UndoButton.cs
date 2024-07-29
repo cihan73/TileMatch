@@ -34,6 +34,8 @@ public class UndoButton : MonoBehaviour
 
     private void OnClick()
     {
+        AudioManager.Instance.PlaySound("Click");
         board.TileCommandInvoker.RemoveCommand();
     }
+
 }

@@ -33,6 +33,7 @@ public class SubmitButton : MonoBehaviour
 
     private void OnClickCallback()
     {
+        AudioManager.Instance.PlaySound("Click");
         wordManager.Submit();
     }
 }
